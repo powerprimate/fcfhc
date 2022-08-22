@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- Font Awesome -->
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+     <!-- MDB -->
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <style>
+        @media (min-width: 1025px) {
+            .h-custom {
+            height: 100vh !important;
+            }
+            }
+    </style>
+    <section class="h-100 h-custom" style="background-color: #8fc4b7;">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+              <div class="card rounded-3">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                  class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                  alt="Sample photo">
+                <div class="card-body p-4 p-md-5">
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Student updation</h3>
+                  
+                  <form class="px-md-2" action="" method='POST'>
+                    {% csrf_token %}
+                    {% for form in form %}
+                    <div class="form-outline mb-4" >
+                      <input type="text" style="display:inline-block;"  id="form3Example1q" class="form-control" />
+                      <label class="form-label" style="display:inline-block;" for="form3Example1q" >{{ form.label }}</label><br>{{ form }}
+                    </div>
+                    {% endfor %}
+                    
+                    </div>
+      
+                    <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
+      
+                  </form>
+      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
+</html>

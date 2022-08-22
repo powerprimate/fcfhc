@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>little flower international</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <style>
+        @media (min-width: 1025px) {
+            .h-custom {
+            height: 100vh !important;
+            }
+            }
+    </style>
+    <section class="h-100 h-custom" style="background-color: #8fc4b7;">
+        <div class="container py-3 h-100 ">
+          {% for message in messages%}
+          <div class="alert alert-warning" role="alert">
+            <p>{{message}}</p>
+          </div>
+          {% endfor %}
+         <a href= "{% url 'login' %}"> <button  class=" btn btn-dark btn-lg text-white fw-bold mb-1">login</button></a>
+          <div class="row d-flex justify-content-center align-items-center h-80">
+            <div class="col-lg-8 col-xl-6">
+              <div class="card rounded-3">
+                
+                <div class="card-body p-4 p-md-5">
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">CREATE USER</h3>
+      
+                  <form class="px-md-2" action="" method='POST'>
+                    {% csrf_token %}
+                    <div class="form-outline mb-4">
+                      <input type="text" name="first_name"  id="form3Example1q" class="form-control" />
+                      <label class="form-label" for="form3Example1q">First name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input type="text" name="last_name"  id="form3Example1q" class="form-control" />
+                      <label class="form-label" for="form3Example1q">Last name</label>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+      
+                      <div class="form-outline mb-4">
+                        <input type="email" name="email" id="form3Example1q" class="form-control" />
+                        <label class="form-label" for="form3Example1q">Email</label>
+                      </div>
+    
+                    </div>
+
+                    <div class="col-md-6 ">
+      
+                      <div class="form-outline mb-4">
+                        <input type="text" name="username" id="form3Example1q" class="form-control" />
+                        <label class="form-label" for="form3Example1q">Username</label>
+                      </div>
+    
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+      
+                      <div class="form-outline mb-4">
+                        <input type="password" name="password" id="form3Example1q" class="form-control" />
+                        <label class="form-label" for="form3Example1q">Password</label>
+                      </div>
+    
+                    </div>
+      
+                    <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
+      
+                  </form>
+
+      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</body>

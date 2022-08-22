@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>little flower international</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet"/>
+</head>
+<body>
+    
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-7">
+            <a class="navbar-brand mx-5" href="{% url 'database' %}">DATABASE</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent"   style="justify-content:space-evenly;flex:auto;">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link mx-5" href="{% url 'database'%}">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mx-5" href="{% url 'adminlogout' %}">logout</a>
+                </li>
+                
+              </ul>
+              <form action='' method='GET' class="form-inline my-lg-0" style="display: inline-flex;">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="search" name='q' placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+              <li>
+                <a href= "{% url 'create' %}"> <button  class=" btn btn-white btn-lg text-dark fw-bold mb-1">Create user</button></a>
+              </li>
+            </div>
+          </nav>
+    </div>
+
+    <!--Table-->
+<div class="container">
+  <table class="table table-striped w-100%" >
+
+    <!--Table head-->
+    <thead>
+      <tr>
+        <th style="font-weight: 900; color:brown">First name</th>
+        <th style="font-weight: 900; color:brown">Last name</th>
+        <th style="font-weight: 900; color:brown">Email</th>
+        <th style="font-weight: 900; color:brown">Username</th>
+      </tr>
+    </thead>
+    <!--Table head-->
+    
+    <!--Table body-->
+    {% for i in users %}
+    {% if not i.is_superuser  %}
+    <tbody>
+      <tr class="table-info">
+        <td>{{ i.first_name }}</td>
+        <td>{{i.last_name}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.username}}</td>
+        <td>
+            <a href="{% url 'update' i.id %}" style="text-decoration: none; color: darkgreen; font-weight: bold;">Edit <i class=" fa-solid fa-pen"></i></a>
+            <a onclick="return confirm('are you want to delete'+' '+'{{ i.username }}'+'?')" href="{% url 'delete' i.id %}"  style="margin: 0; padding-left: 30px; text-decoration: none; color: crimson;font-weight: bold; ">Delete <i class=" fa-solid fa-trash-can" ></i></a>
+        </td>
+      </tr>
+    </tbody>
+    {% endif  %}
+    {% endfor %}
+    <!--Table body-->
+  
+  
+  </table>
+</div>
+
+  <!--Table-->
+</body>

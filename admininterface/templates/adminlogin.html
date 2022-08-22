@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>little flower international</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <section class="vh-100" style="background: #6a11cb;background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))">
+        <div class="container py-5 h-100">
+          {% for message in messages %}
+          <div class="alert alert-danger" role="alert">{{message}}</div>
+          {% endfor %}
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5 ">
+              <h3 class="mb-1 text-middle text-center bg-dark text-white" style="font-size: 2em; padding-top: 30px; font-weight: 700; border-radius: 15px; height: 100px;">Teacher's signin</h3>
+              <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                <div class="card-body  text-center bg-dark text-white">
+                 
+                  <form action='' method='POST'>
+                    {% csrf_token %}
+                  <div class="form-outline mb-4">
+                    <input type="username" name="username" id="typeUsernameX-2" class="form-control form-control-lg" />
+                    <label class="form-label text-white" for="typeUsernameX-2">Username</label>
+                  </div>
+      
+                  <div class="form-outline mb-4">
+                    <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" />
+                    <label class="form-label text-white" for="typePasswordX-2" >Password</label>
+                  </div>
+      
+                  <button class="btn btn-primary btn-lg btn-block mb-3" type="submit">Login</button>
+
+                  </form>
+
+                  <p class="small pb-lg-1"><a class="text-white-50" href="{% url 'login' %}">student login</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
